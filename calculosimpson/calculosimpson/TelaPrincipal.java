@@ -7,7 +7,10 @@ package calculosimpson;
 
 import java.awt.ComponentOrientation;
 import java.awt.FlowLayout;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -21,6 +24,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
      */
     public TelaPrincipal() {
         initComponents();
+
     }
 
     /**
@@ -33,12 +37,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        txLimiiteMax = new javax.swing.JTextField();
+        txLimiteMax = new javax.swing.JTextField();
         txLimiteMin = new javax.swing.JTextField();
         txGrauFuncao = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         btnInsereGrau = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        comboTipoFuncao = new javax.swing.JComboBox<>();
+        btnInserirOutraFuncao = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,9 +56,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel1.setMinimumSize(new java.awt.Dimension(100, 353));
         jLabel1.setPreferredSize(new java.awt.Dimension(100, 353));
 
-        txLimiiteMax.addActionListener(new java.awt.event.ActionListener() {
+        txLimiteMax.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txLimiiteMaxActionPerformed(evt);
+                txLimiteMaxActionPerformed(evt);
             }
         });
 
@@ -61,7 +70,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jLabel2.setText("Informe o grau do polinômio");
 
-        btnInsereGrau.setText("Inserir Função");
+        btnInsereGrau.setText("Inserir Função Polinomial");
         btnInsereGrau.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInsereGrauActionPerformed(evt);
@@ -81,26 +90,49 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGap(0, 175, Short.MAX_VALUE)
         );
 
+        jLabel3.setText("OU");
+
+        jLabel4.setText("Selecione o tipo de função");
+
+        jLabel5.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Calculo de Integral por método de Simpson");
+        jLabel5.setToolTipText("");
+
+        comboTipoFuncao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Log", "e", "sen", "cos", "tan" }));
+        comboTipoFuncao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboTipoFuncaoActionPerformed(evt);
+            }
+        });
+
+        btnInserirOutraFuncao.setText("Inserir outra função");
+        btnInserirOutraFuncao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInserirOutraFuncaoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(23, 23, 23)
                 .addComponent(txLimiteMin, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txLimiiteMax, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txLimiteMax, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 196, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -111,38 +143,61 @@ public class TelaPrincipal extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(btnInsereGrau)
                                 .addGap(16, 16, 16)))
-                        .addGap(171, 171, 171))))
+                        .addGap(16, 16, 16)
+                        .addComponent(jLabel3)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(79, 79, 79)
+                                .addComponent(comboTipoFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(11, 11, 11))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnInserirOutraFuncao)
+                                    .addComponent(jLabel4))))
+                        .addGap(30, 30, 30))))
+            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(txLimiteMin, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(138, 138, 138))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txLimiiteMax, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txGrauFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnInsereGrau)
-                .addGap(67, 67, 67)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(txLimiteMax, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txGrauFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
+                            .addComponent(comboTipoFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnInsereGrau)
+                            .addComponent(btnInserirOutraFuncao))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(69, 69, 69))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txLimiteMin, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txLimiiteMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txLimiiteMaxActionPerformed
+    private void txLimiteMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txLimiteMaxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txLimiiteMaxActionPerformed
+    }//GEN-LAST:event_txLimiteMaxActionPerformed
 
     private void txGrauFuncaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txGrauFuncaoActionPerformed
         // TODO add your handling code here:
@@ -151,20 +206,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void btnInsereGrauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsereGrauActionPerformed
         // TODO add your handling code here:
+        jPanel1.removeAll();
+        FlowLayout experimentLayout = new FlowLayout();
 
+        jPanel1.setLayout(experimentLayout);
         int cont = 0;
         int grau = -1;
         if (txGrauFuncao != null) {
             grau = Integer.parseInt(txGrauFuncao.getText());
         }
         if (grau > -1) {
-            FlowLayout experimentLayout = new FlowLayout();
 
-            jPanel1.setLayout(experimentLayout);
+            fieldsCoeficientes = new JTextField[grau + 1];
+            labelsX = new JLabel[grau + 1];
 
-            JTextField[] fieldsCoeficientes = new JTextField[grau + 1];
-            JLabel[] labelsX = new JLabel[grau + 1];
-            JTextField[] fieldsOperador = new JTextField[grau + 1];
             for (cont = grau; cont >= 0; cont--) {
                 System.out.println("oi");
 
@@ -179,8 +234,86 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         ComponentOrientation.LEFT_TO_RIGHT);
                 jPanel1.validate();
             }
+            inserirBotao();
         }
     }//GEN-LAST:event_btnInsereGrauActionPerformed
+
+    public void inserirBotao() {
+        JButton calculaIntegral = new JButton("Calcular integral");
+        jPanel1.add(calculaIntegral);
+        jPanel1.validate();
+        calculaIntegral.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                calcularIntegral();
+            }
+        });
+    }
+
+    private void comboTipoFuncaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboTipoFuncaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboTipoFuncaoActionPerformed
+
+    private void btnInserirOutraFuncaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirOutraFuncaoActionPerformed
+        // TODO add your handling code here:
+        jPanel1.removeAll();
+        FlowLayout experimentLayout = new FlowLayout();
+
+        jPanel1.setLayout(experimentLayout);
+
+        coeficienteOutraFuncao = new JTextField();
+        coeficienteOutraFuncao.setColumns(5);
+        expoente = new JTextField();
+        expoente.setColumns(5);
+        labelOutraFuncao = new JLabel(comboTipoFuncao.getSelectedItem().toString());
+        jPanel1.add(coeficienteOutraFuncao);
+        JLabel x = new JLabel("X^");
+        jPanel1.add(labelOutraFuncao);
+        jPanel1.add(x);
+        jPanel1.add(expoente);
+        JButton calculaIntegral = new JButton("Calcular integral");
+        jPanel1.add(calculaIntegral);
+        jPanel1.validate();
+        calculaIntegral.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                calcularIntegralOutraFuncao();
+            }
+        });
+
+
+    }//GEN-LAST:event_btnInserirOutraFuncaoActionPerformed
+
+    public void calcularIntegral() {
+
+        int grauInt = Integer.parseInt(txGrauFuncao.getText());
+        double limiteMinDouble = Double.parseDouble(txLimiteMin.getText());
+        double limiteMaxDouble = Double.parseDouble(txLimiteMax.getText());
+        CalculoSimpson calculoControle = new CalculoSimpson(grauInt, limiteMinDouble, limiteMaxDouble, 3);
+        int cont;
+
+        if (grauInt > -1) {
+            for (cont = grauInt; cont >= 0; cont--) {
+                System.out.println(calculoControle.coeficiente.length);
+                calculoControle.coeficiente[cont] = Double.parseDouble(fieldsCoeficientes[cont].getText());
+            }
+        }
+
+        JOptionPane.showMessageDialog(this, calculoControle.calcularIntegralFinal());
+
+    }
+
+    public void calcularIntegralOutraFuncao() {
+
+        double limiteMinDouble = Double.parseDouble(txLimiteMin.getText());
+        double limiteMaxDouble = Double.parseDouble(txLimiteMax.getText());
+        CalculoSimpson calculoControle = new CalculoSimpson(0, limiteMinDouble, limiteMaxDouble, 3);
+        int cont;
+
+        System.out.println(calculoControle.coeficiente.length);
+        calculoControle.coeficiente[0] = Double.parseDouble(coeficienteOutraFuncao.getText());
+
+        JOptionPane.showMessageDialog(this, calculoControle.calcularIntegralFinal());
+
+    }
 
     /**
      * @param args the command line arguments
@@ -216,14 +349,24 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
     }
+    public JTextField[] fieldsCoeficientes;
+    public JLabel[] labelsX;
+    public JTextField coeficienteOutraFuncao;
+    public JTextField expoente;
+    public JLabel labelOutraFuncao;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnInsereGrau;
+    private javax.swing.JButton btnInserirOutraFuncao;
+    private javax.swing.JComboBox<String> comboTipoFuncao;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txGrauFuncao;
-    private javax.swing.JTextField txLimiiteMax;
+    private javax.swing.JTextField txLimiteMax;
     private javax.swing.JTextField txLimiteMin;
     // End of variables declaration//GEN-END:variables
 }

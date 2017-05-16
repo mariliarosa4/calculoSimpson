@@ -11,73 +11,142 @@ import static java.lang.Math.pow;
  *
  * @author gabrielle
  */
-
 public class CalculoSimpson {
-        static int grauFuncao=2;
-        static double[] coeficiente = new double[grauFuncao+1];
-        static char[] operadores = new char[grauFuncao];
-        static double limiteMin=4;
-        static double limiteMax=8;
-        static double h;
-        static double resultadoFinal;
-        static int intervalos;
+
+    int grauFuncao;
+    double[] coeficiente;
+    double limiteMin;
+    double limiteMax;
+    double h;
+    double resultadoFinal;
+    int intervalos;
+    int expoente;
+    char tipoFuncao; //P - Polinomial; L - Logaritimica; S - Seno; T - tangente; C - Cosseno;
+
+    public CalculoSimpson(int grauFuncao, double limiteMin, double limiteMax, int intervalos) {
+        this.grauFuncao = grauFuncao;
+        this.limiteMin = limiteMin;
+        this.limiteMax = limiteMax;
+        this.intervalos = intervalos;
+        this.coeficiente = new double[grauFuncao + 1];
+        calculaH(this.limiteMin, this.limiteMax, this.intervalos);
+
+    }
 
     /**
      * @param args the command line arguments
      */
-    static double calculaH(double min, double max, int intervalos){
-        double h=(max-min)/(2*intervalos);
-        return h;
+    final void calculaH(double min, double max, int intervalos) {
+        this.h = (max - min) / (2 * intervalos);
     }
-    static double realizaFuncao(double valorX){
-        double resultado= (coeficiente[grauFuncao]*(pow(valorX, grauFuncao)));
+
+    public double realizaFuncao(double valorX) {
+        double resultado = (this.coeficiente[this.grauFuncao] * (pow(valorX, this.grauFuncao)));
         int j;
-        for(j=grauFuncao-1; j>=0; j--){
-            switch(operadores[j]){
-                case '+':
-                resultado+= coeficiente[j]*(pow(valorX, j));
-                break;
-            case '-':
-                resultado-= coeficiente[j]*(pow(valorX, j));
-                break;
-            case '*':
-                resultado*= coeficiente[j]*(pow(valorX, j));
-                break;
-            case '/':
-                resultado/= coeficiente[j]*(pow(valorX, j));
-                break;
-            default:
-                return 0;
-            }
+        for (j = grauFuncao - 1; j >= 0; j--) {
+            resultado += coeficiente[j] * (pow(valorX, j));
         }
         return resultado;
     }
-    public static void main(String[] args) {
-        
-        
-        coeficiente[2]=3;
-        coeficiente[1]=2;
-        coeficiente[0]=1;
-        
-        operadores[1]='+';
-        operadores[0]='-';
-        intervalos=3;
-        h=calculaH(limiteMin, limiteMax, intervalos);
-        int i=0;
-        double valorX, somatorioFuncao=0;
-        do{
-            valorX=(limiteMin+(h*i));
-            if(i==0 || valorX==limiteMax){
-                somatorioFuncao+=realizaFuncao(valorX);
-            }else if(i%2==0){
-                somatorioFuncao+=2*realizaFuncao(valorX);
-            }else{
-                somatorioFuncao+=4*realizaFuncao(valorX);
-            }
-            i++;
-        }while(valorX<limiteMax);
-        resultadoFinal= (h/3)*somatorioFuncao;
-        System.out.println(resultadoFinal);
+
+    public double funcaoLog(double valorX) {
+        return Math.log(valorX) * coeficiente[0];
     }
-    
+
+    public double funcaoSeno(double valorX) {
+        return Math.sin(valorX) * coeficiente[0];
+    }
+
+    public double funcaoCosseno(double valorX) {
+        return Math.cos(valorX) * coeficiente[0];
+    }
+
+    public double funcaoTangente(double valorX) {
+        return Math.tan(valorX) * coeficiente[0];
+    }
+
+    public double calcularIntegralFinal() {
+
+        int i = 0;
+        double valorX, somatorioFuncao = 0;
+        switch (tipoFuncao) {
+            case 'P':
+                do {
+                    valorX = (limiteMin + (h * i));
+                    if (i == 0 || valorX == limiteMax) {
+                        somatorioFuncao += realizaFuncao(valorX);
+                    } else if (i % 2 == 0) {
+                        somatorioFuncao += 2 * realizaFuncao(valorX);
+                    } else {
+                        somatorioFuncao += 4 * realizaFuncao(valorX);
+                    }
+                    i++;
+                } while (valorX < limiteMax);
+                break;
+            case 'L':
+                do {
+                    valorX = (limiteMin + (h * i));
+                    if (i == 0 || valorX == limiteMax) {
+                        somatorioFuncao += funcaoLog(pow(valorX, expoente));
+                    } else if (i % 2 == 0) {
+                        somatorioFuncao += 2 * funcaoLog(valorX);
+                    } else {
+                        somatorioFuncao += 4 * funcaoLog(valorX);
+                    }
+                    i++;
+                } while (valorX < limiteMax);
+                break;
+            case 'S':
+                do {
+                    valorX = (limiteMin + (h * i));
+                    if (i == 0 || valorX == limiteMax) {
+                        somatorioFuncao += funcaoSeno(valorX);
+                    } else if (i % 2 == 0) {
+                        somatorioFuncao += 2 * funcaoSeno(valorX);
+                    } else {
+                        somatorioFuncao += 4 * funcaoSeno(valorX);
+                    }
+                    i++;
+                } while (valorX < limiteMax);
+                break;
+            case 'T':
+                do {
+                    valorX = (limiteMin + (h * i));
+                    if (i == 0 || valorX == limiteMax) {
+                        somatorioFuncao += funcaoTangente(valorX);
+                    } else if (i % 2 == 0) {
+                        somatorioFuncao += 2 * funcaoTangente(valorX);
+                    } else {
+                        somatorioFuncao += 4 * funcaoTangente(valorX);
+                    }
+                    i++;
+                } while (valorX < limiteMax);
+                break;
+            case 'C':
+                do {
+                    valorX = (limiteMin + (h * i));
+                    if (i == 0 || valorX == limiteMax) {
+                        somatorioFuncao += funcaoCosseno(valorX);
+                    } else if (i % 2 == 0) {
+                        somatorioFuncao += 2 * funcaoCosseno(valorX);
+                    } else {
+                        somatorioFuncao += 4 * funcaoCosseno(valorX);
+                    }
+                    i++;
+                } while (valorX < limiteMax);
+                break;
+        }
+        resultadoFinal = (h / 3) * somatorioFuncao;
+        System.out.println(resultadoFinal);
+        return resultadoFinal;
+    }
+
+    public char getTipoFuncao() {
+        return tipoFuncao;
+    }
+
+    public void setTipoFuncao(char tipoFuncao) {
+        this.tipoFuncao = tipoFuncao;
+    }
+
 }
