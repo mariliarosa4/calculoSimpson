@@ -26,7 +26,7 @@ public class CalculoSimpson {
      * @param args the command line arguments
      */
     static double calculaH(double min, double max, int intervalos){
-        double h=(max-min)/2*intervalos;
+        double h=(max-min)/(2*intervalos);
         return h;
     }
     static double realizaFuncao(double valorX){
@@ -61,8 +61,8 @@ public class CalculoSimpson {
         
         operadores[1]='+';
         operadores[0]='-';
-        
-        h=calculaH(limiteMin, limiteMax, 2);
+        intervalos=3;
+        h=calculaH(limiteMin, limiteMax, intervalos);
         int i=0;
         double valorX, somatorioFuncao=0;
         do{
