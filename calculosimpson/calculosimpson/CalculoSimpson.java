@@ -9,7 +9,7 @@ import static java.lang.Math.pow;
 
 /**
  *
- * @author gabrielle
+ * @author  Marília e Gabriel
  */
 public class CalculoSimpson {
 
@@ -20,7 +20,17 @@ public class CalculoSimpson {
     double h;
     double resultadoFinal;
     int intervalos;
-    int expoente;
+    double expoente;
+
+    public double getExpoente() {
+        return expoente;
+    }
+
+    public void setExpoente(double expoente) {
+        this.expoente = expoente;
+    }
+
+    
     char tipoFuncao; //P - Polinomial; L - Logaritimica; S - Seno; T - tangente; C - Cosseno;
 
     public CalculoSimpson(int grauFuncao, double limiteMin, double limiteMax, int intervalos) {
@@ -53,6 +63,9 @@ public class CalculoSimpson {
         return Math.log(valorX) * coeficiente[0];
     }
 
+     public double funcaoE(double valorX) {
+        return pow(Math.E, (valorX) * coeficiente[0]);
+    }
     public double funcaoSeno(double valorX) {
         return Math.sin(valorX) * coeficiente[0];
     }
@@ -86,12 +99,13 @@ public class CalculoSimpson {
             case 'L':
                 do {
                     valorX = (limiteMin + (h * i));
+                    
                     if (i == 0 || valorX == limiteMax) {
                         somatorioFuncao += funcaoLog(pow(valorX, expoente));
                     } else if (i % 2 == 0) {
-                        somatorioFuncao += 2 * funcaoLog(valorX);
+                        somatorioFuncao += 2 * funcaoLog(pow(valorX, expoente));
                     } else {
-                        somatorioFuncao += 4 * funcaoLog(valorX);
+                        somatorioFuncao += 4 * funcaoLog(pow(valorX, expoente));
                     }
                     i++;
                 } while (valorX < limiteMax);
@@ -100,11 +114,11 @@ public class CalculoSimpson {
                 do {
                     valorX = (limiteMin + (h * i));
                     if (i == 0 || valorX == limiteMax) {
-                        somatorioFuncao += funcaoSeno(valorX);
+                        somatorioFuncao += funcaoSeno(pow(valorX, expoente));
                     } else if (i % 2 == 0) {
-                        somatorioFuncao += 2 * funcaoSeno(valorX);
+                        somatorioFuncao += 2 * funcaoSeno(pow(valorX, expoente));
                     } else {
-                        somatorioFuncao += 4 * funcaoSeno(valorX);
+                        somatorioFuncao += 4 * funcaoSeno(pow(valorX, expoente));
                     }
                     i++;
                 } while (valorX < limiteMax);
@@ -126,15 +140,30 @@ public class CalculoSimpson {
                 do {
                     valorX = (limiteMin + (h * i));
                     if (i == 0 || valorX == limiteMax) {
-                        somatorioFuncao += funcaoCosseno(valorX);
+                        somatorioFuncao += funcaoCosseno(pow(valorX, expoente));
                     } else if (i % 2 == 0) {
-                        somatorioFuncao += 2 * funcaoCosseno(valorX);
+                        somatorioFuncao += 2 * funcaoCosseno(pow(valorX, expoente));
                     } else {
-                        somatorioFuncao += 4 * funcaoCosseno(valorX);
+                        somatorioFuncao += 4 * funcaoCosseno(pow(valorX, expoente));
                     }
                     i++;
                 } while (valorX < limiteMax);
                 break;
+            case 'E':
+                 do {
+                    valorX = (limiteMin + (h * i));
+                    if (i == 0 || valorX == limiteMax) {
+                        somatorioFuncao += funcaoE(pow(valorX, expoente));
+                    } else if (i % 2 == 0) {
+                        somatorioFuncao += 2 * funcaoE(pow(valorX, expoente));
+                    } else {
+                        somatorioFuncao += 4 * funcaoE(pow(valorX, expoente));
+                    }
+                    i++;
+                } while (valorX < limiteMax);
+                break;
+            
+               
         }
         resultadoFinal = (h / 3) * somatorioFuncao;
         System.out.println(resultadoFinal);
@@ -148,5 +177,7 @@ public class CalculoSimpson {
     public void setTipoFuncao(char tipoFuncao) {
         this.tipoFuncao = tipoFuncao;
     }
+
+  
 
 }

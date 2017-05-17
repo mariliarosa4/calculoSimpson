@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author Marília
+ * @author Marília e Gabriel
  */
 public class TelaPrincipal extends javax.swing.JFrame {
 
@@ -48,6 +48,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         comboTipoFuncao = new javax.swing.JComboBox<>();
         btnInserirOutraFuncao = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        txIntervalos = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -113,83 +116,109 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jLabel6.setText("Desenvovlido por Gabriel Leal e Marilia Rosa - Calculo II - 2017");
+
+        jLabel7.setText("Insira o numero de intervalos:");
+
+        txIntervalos.setText(" ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(txLimiteMin, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txLimiteMax, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
+                        .addComponent(txLimiteMin, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(278, 278, 278))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txLimiteMax, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(85, 85, 85)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addGap(41, 41, 41)
-                                    .addComponent(txGrauFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(33, 33, 33))
-                                .addComponent(jLabel2))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(btnInsereGrau)
-                                .addGap(16, 16, 16)))
-                        .addGap(16, 16, 16)
-                        .addComponent(jLabel3)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(79, 79, 79)
-                                .addComponent(comboTipoFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(11, 11, 11))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addGap(41, 41, 41)
+                                            .addComponent(txGrauFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(33, 33, 33))
+                                        .addComponent(jLabel2))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(btnInsereGrau)
+                                        .addGap(16, 16, 16)))
+                                .addGap(16, 16, 16)
+                                .addComponent(jLabel3)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(79, 79, 79)
+                                        .addComponent(comboTipoFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(11, 11, 11))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(btnInserirOutraFuncao)
+                                            .addComponent(jLabel4))))
+                                .addGap(30, 30, 30))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(btnInserirOutraFuncao)
-                                    .addComponent(jLabel4))))
-                        .addGap(30, 30, 30))))
-            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel7)
+                                .addGap(55, 55, 55)
+                                .addComponent(txIntervalos, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(81, 81, 81))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(281, 281, 281)
+                .addComponent(jLabel6)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(13, 13, 13)
+                .addComponent(jLabel5)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txLimiteMax, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txLimiteMin, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(txLimiteMax, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel7))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(txIntervalos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel4))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txGrauFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3)
+                                    .addComponent(comboTipoFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(btnInsereGrau)
+                                    .addComponent(btnInserirOutraFuncao))))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txGrauFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3)
-                            .addComponent(comboTipoFuncao, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnInsereGrau)
-                            .addComponent(btnInserirOutraFuncao))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(69, 69, 69))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txLimiteMin, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(jLabel6)
+                .addContainerGap())
         );
 
         pack();
@@ -213,7 +242,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         int cont = 0;
         int grau = -1;
         if (txGrauFuncao != null) {
-            grau = Integer.parseInt(txGrauFuncao.getText());
+            grau = Integer.parseInt(txGrauFuncao.getText().trim());
         }
         if (grau > -1) {
 
@@ -284,12 +313,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     public void calcularIntegral() {
 
-        int grauInt = Integer.parseInt(txGrauFuncao.getText());
-        double limiteMinDouble = Double.parseDouble(txLimiteMin.getText());
-        double limiteMaxDouble = Double.parseDouble(txLimiteMax.getText());
-        CalculoSimpson calculoControle = new CalculoSimpson(grauInt, limiteMinDouble, limiteMaxDouble, 3);
+        int grauInt = Integer.parseInt(txGrauFuncao.getText().trim());
+        double limiteMinDouble = Double.parseDouble(txLimiteMin.getText().trim());
+        double limiteMaxDouble = Double.parseDouble(txLimiteMax.getText().trim());
+        int intervalos = Integer.parseInt(txIntervalos.getText().trim());
+        CalculoSimpson calculoControle = new CalculoSimpson(grauInt, limiteMinDouble, limiteMaxDouble, intervalos);
         int cont;
-
+        calculoControle.setTipoFuncao('P');
         if (grauInt > -1) {
             for (cont = grauInt; cont >= 0; cont--) {
                 System.out.println(calculoControle.coeficiente.length);
@@ -303,14 +333,33 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     public void calcularIntegralOutraFuncao() {
 
-        double limiteMinDouble = Double.parseDouble(txLimiteMin.getText());
-        double limiteMaxDouble = Double.parseDouble(txLimiteMax.getText());
-        CalculoSimpson calculoControle = new CalculoSimpson(0, limiteMinDouble, limiteMaxDouble, 3);
+        double limiteMinDouble = Double.parseDouble(txLimiteMin.getText().trim());
+        double limiteMaxDouble = Double.parseDouble(txLimiteMax.getText().trim());
+          int intervalos = Integer.parseInt(txIntervalos.getText().trim());
+        CalculoSimpson calculoControle = new CalculoSimpson(0, limiteMinDouble, limiteMaxDouble, intervalos);
         int cont;
-
+        if (comboTipoFuncao.getSelectedItem().toString() == "Log") {
+            calculoControle.setTipoFuncao('L');
+        } else {
+            if (comboTipoFuncao.getSelectedItem().toString() == "sen") {
+                calculoControle.setTipoFuncao('S');
+            } else {
+                if (comboTipoFuncao.getSelectedItem().toString() == "cos") {
+                    calculoControle.setTipoFuncao('C');
+                } else {
+                    if (comboTipoFuncao.getSelectedItem().toString() == "tan") {
+                        calculoControle.setTipoFuncao('T');
+                    } else {
+                        if (comboTipoFuncao.getSelectedItem().toString() == "e") {
+                            calculoControle.setTipoFuncao('E');
+                        }
+                    }
+                }
+            }
+        }
         System.out.println(calculoControle.coeficiente.length);
         calculoControle.coeficiente[0] = Double.parseDouble(coeficienteOutraFuncao.getText());
-
+        calculoControle.setExpoente(Double.parseDouble(expoente.getText()));
         JOptionPane.showMessageDialog(this, calculoControle.calcularIntegralFinal());
 
     }
@@ -364,8 +413,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txGrauFuncao;
+    private javax.swing.JTextField txIntervalos;
     private javax.swing.JTextField txLimiteMax;
     private javax.swing.JTextField txLimiteMin;
     // End of variables declaration//GEN-END:variables
